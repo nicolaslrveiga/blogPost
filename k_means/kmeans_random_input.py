@@ -31,6 +31,7 @@ plt.ylabel("y axis");
 plt.show()
 
 difference_between_new_and_old_cluster_center = 1.0
+iteration = 1
 while(difference_between_new_and_old_cluster_center != 0.0):
     # The distance matrix will have the shape [number of samples, number of clusters]
     dist = np.zeros((len(data[:, 0]), len(c[:, 0])))
@@ -67,7 +68,9 @@ while(difference_between_new_and_old_cluster_center != 0.0):
     plt.scatter(data[np.where(pixels_classification==1)][:, 0], data[np.where(pixels_classification==1)][:, 1], alpha=0.3);
     plt.scatter(new_c[:, 0], new_c[:, 1], color="red");
     plt.grid();
-    plt.title("Data and random cluster centers");
+    plt.title("Data and new cluster center, iteration " + str(iteration) + " loss function: " + str(round(objective_function, 2)));
     plt.xlabel("x axis");
     plt.ylabel("y axis");
     plt.show()
+    
+    iteration = iteration + 1
